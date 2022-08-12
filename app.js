@@ -91,6 +91,8 @@ const oldObject = function(array) {
 // STEP 9
 // With an arrow function, we need to wrap our object in parentheses
 // Otherwise, it will be interpreted as a code block
+
+// See here when we want to return multiple things, we need to include both rounded and curly brackets //
 const newObject = array => ({
   firstValue: array[0],
   secondValue: array[1],
@@ -115,6 +117,14 @@ let sum = function(a, b, c, d) {
 // TODO: Uncomment the following line of code to see the output in the browser console
 // console.log(sum(1, 2, 3, 4));
 
+// --------------- START MY ANSWER --------------- //
+
+const newSum = (a, b, c, d) => a + b + c + d;
+
+// console.log(newSum(1, 2, 3, 4))
+
+// --------------- FINISH MY ANSWER --------------- //
+
 
 let objectLit = function() {
   return {
@@ -127,15 +137,33 @@ let objectLit = function() {
 // TODO: Uncomment the following line of code to see the output in the browser console
 // console.log(objectLit());
 
+// --------------- START MY ANSWER --------------- //
+
+const newObjectLit = array => ({key1: 'value1', key2: 'value2', key3: 'value3'});
+
+// console.log(objectLit());
+
+// --------------- FINISH MY ANSWER --------------- //
+
 
 let sumAndProduct = function(a, b) {
   let sum = a + b;
   let product = a * b;
-  return [sum, product];
-};
+  return [sum, product]};
 
 // TODO: Uncomment the following line of code to see the output in the browser console
 // console.log(sumAndProduct(3, 9));
+
+// --------------- START MY ANSWER --------------- //
+
+let newSumAndProduct = (a, b) => { 
+    let sum = a + b; 
+    let product = a * b; 
+    return [sum, product] };
+
+// console.log(newSumAndProduct(3,9));
+
+// --------------- FINISH MY ANSWER --------------- //
 
 
 let message = function(name) {
@@ -144,6 +172,14 @@ let message = function(name) {
 
 // TODO: Uncomment the following line of code to see the output in the browser console
 // console.log(message('Allie'));
+
+// --------------- START MY ANSWER --------------- //
+
+let newMessage = name => `Hello, ${name}!`;
+
+// console.log(newMessage("Yazan"));
+
+// --------------- FINISH MY ANSWER --------------- //
 
 
 let Student = function(name, age, hometown) {
@@ -190,17 +226,35 @@ Student.prototype.scope = function() {
 };
 
 // TODO: Uncomment the following line of code to see the output in the browser console
-// joe.scope();
+joe.scope();
 
 Student.prototype.scopeArrow = () => console.log(this);
 
 // TODO: Uncomment the following line of code to see the output in the browser console
-// joe.scopeArrow();
+joe.scopeArrow();
 
 // TODO: Write a COMMENT below to answer the following questions.
 // 1. What is "this" when joe.scope() is invoked?
-//
+// this refers to the object created from the constructor.
 // 2. What is "this" when joe.scopeArrow() is invoked?
-//
+// this refers to the window, it is not scoped to a specific thing.
 // 3. Explain why "this" is different when an arrow function is used.
-//
+/* The normal way of writing a function does consider and redefines everything in it to the place it was called in/for
+
+   Student.prototype.scope = function() {
+   console.log(this);
+   };
+   joe.scope();
+
+   in the previous example, the function scope is being called by joe, so, it redefiens (this) to be related to joe and this action is called (based on context).
+   Speaking of which, the arrow functions, functions differently, in such that it does not redefine its content to the caller, it uses its variables in their
+   lexical scope, which means where did this variable initially initialized.
+
+   Student.prototype.scopeArrow = () => console.log(this);
+   joe.scopeArrow();
+
+   in the aforementioned exmaple, (this) is initialized in a global function, hence, (this) refers to its lexical scope which is the window in the browser,
+   moreover, if a method is created inside a constructor with using arrow functions and (this), (this) will be refering to the object as its lexical scope 
+   is the constructor.
+*/
+
