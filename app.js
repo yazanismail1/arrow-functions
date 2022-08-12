@@ -156,7 +156,10 @@ let sumAndProduct = function(a, b) {
 
 // --------------- START MY ANSWER --------------- //
 
-let newSumAndProduct = (a, b) => { let sum = a + b; let product = a * b; return [sum, product] };
+let newSumAndProduct = (a, b) => { 
+    let sum = a + b; 
+    let product = a * b; 
+    return [sum, product] };
 
 // console.log(newSumAndProduct(3,9));
 
