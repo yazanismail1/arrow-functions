@@ -236,6 +236,22 @@ joe.scopeArrow();
 // 2. What is "this" when joe.scopeArrow() is invoked?
 // this refers to the window, it is not scoped to a specific thing.
 // 3. Explain why "this" is different when an arrow function is used.
-// this in the normal function refers to the caller of the function, unlike this in the arrow function which refers to its scope not to its caller,
-// its scope is scopeArrow which it is inreturn refers to joe and joe is a global variable, which means its scope is global so when refering this, this means 
-// the last and final scope which is global and it will return the window. 
+/* The normal way of writing a function does consider and redefines everything in it to the place it was called in/for
+
+   Student.prototype.scope = function() {
+   console.log(this);
+   };
+   joe.scope();
+
+   in the previous example, the function scope is being called by joe, so, it redefiens (this) to be related to joe and this action is called (based on context).
+   Speaking of which, the arrow functions, functions differently, in such that it does not redefine its content to the caller, it uses its variables in their
+   lexical scope, which means where did this variable initially initialized.
+
+   Student.prototype.scopeArrow = () => console.log(this);
+   joe.scopeArrow();
+
+   in the aforementioned exmaple, (this) is initialized in a global function, hence, (this) refers to its lexical scope which is the window in the browser,
+   moreover, if a method is created inside a constructor with using arrow functions and (this), (this) will be refering to the object as its lexical scope 
+   is the constructor.
+*/
+
